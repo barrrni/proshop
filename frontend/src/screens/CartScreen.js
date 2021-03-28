@@ -6,6 +6,7 @@ import Message from '../components/Message'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 
 const CartScreen = ({ match, location, history }) => {
+
     const productId = match.params.id
 
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
@@ -49,21 +50,23 @@ const CartScreen = ({ match, location, history }) => {
                                     <Form.Control
                                         as='select'
                                         value={item.qty}
-                                        onChange={(e) =>
+                                        onChange={(e) => {
                                             dispatch(
                                                 addToCart(item.product, Number(e.target.value))
                                             )
-                                        }
+                                            history.push('/cart')
+                                        }}
                                     >
-                                        {[...Array(item.countInStock).keys()].map((x) => (
-                                            <option key={x + 1} value={x + 1}>
-                                                {x + 1}
+                                        {[...Array(item.countInStock)].map((x, i) => (
+                                            <option key={i + 1} value={i + 1}>
+                                                {i + 1}
                                             </option>
                                         ))}
                                     </Form.Control>
                                 </Col>
                                 <Col md={2}>
                                     <Button
+                                        onClick={(e) => removeFromCartHandler(item.product)}
                                         type='button'
                                         variant='light'
                                     >
@@ -102,7 +105,7 @@ const CartScreen = ({ match, location, history }) => {
                 </ListGroup>
             </Card>
         </Col>
-    </Row>
+    </Row >
 }
 
 export default CartScreen

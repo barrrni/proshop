@@ -6,6 +6,7 @@ import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { ListProductDetails } from '../actions/productActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 const ProductScreen = ({ history, match }) => {
   const [qty, SetQty] = useState(1)
