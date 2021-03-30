@@ -6,7 +6,7 @@ import CheckoutSteps from '../components/CheckoutSteps'
 import { saveShippingAddress } from '../actions/cartActions'
 
 const ShippingScreen = ({ history }) => {
-    const cart = useSelector(state => state.cart)
+    const cart = useSelector((state) => state.cart)
     const { shippingAddress } = cart
 
     const [address, setAddress] = useState(shippingAddress.address)
@@ -40,7 +40,7 @@ const ShippingScreen = ({ history }) => {
 
                 <Form.Group controlId='postalCode'>
                     <Form.Label>Postal Code</Form.Label>
-                    <Form.Control type='text' placeholder='Enter postal pode' required value={postalCode}
+                    <Form.Control type='text' placeholder='Enter postal code' required value={postalCode}
                         onChange={(e) => setPostalCode(e.target.value)}></Form.Control>
                 </Form.Group>
 
